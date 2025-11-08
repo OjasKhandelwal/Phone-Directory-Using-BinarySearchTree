@@ -2,7 +2,7 @@ Made this project for my college internal assessment.
 
 
 
-# Phone-Directory-Using-Binary-Search-Tree
+# Phone-Directory-UsingBinarySearchTree
 
 This is a simple Phone Directory application implemented in C++ using a Binary Search Tree (BST) data structure.
 It allows users to efficiently add, search, delete, and display contacts in alphabetical order.
