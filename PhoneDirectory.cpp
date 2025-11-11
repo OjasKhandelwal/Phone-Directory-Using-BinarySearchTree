@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>  // for isdigit
 using namespace std;
 
 struct Contact {
@@ -72,6 +73,15 @@ void inorder(Contact* root) {
     inorder(root->right);
 }
 
+// Function to validate if the phone number is exactly 10 digits
+bool isValidPhoneNumber(const string& phone) {
+    if (phone.length() != 10) return false;
+    for (char c : phone) {
+        if (!isdigit(c)) return false;
+    }
+    return true;
+}
+
 int main() {
     Contact* root = nullptr;
     int choice;
@@ -92,8 +102,17 @@ int main() {
             case 1:
                 cout << "Enter name: ";
                 getline(cin, name);
-                cout << "Enter phone number: ";
-                getline(cin, phone);
+
+                // Loop until a valid phone number is entered
+                do {
+                    cout << "Enter phone number (10 digits): ";
+                    getline(cin, phone);
+
+                    if (!isValidPhoneNumber(phone)) {
+                        cout << "Invalid phone number! It must be exactly 10 digits.\n";
+                    }
+                } while (!isValidPhoneNumber(phone));
+
                 root = insert(root, name, phone);
                 cout << "Contact added successfully!\n";
                 break;
